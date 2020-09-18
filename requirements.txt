@@ -1,0 +1,6 @@
+flask
+myquery
+gunicorn
+python-dotenv
+flask-cors
+flask_script
