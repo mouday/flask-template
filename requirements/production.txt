@@ -1,6 +1,8 @@
+# production
+
 flask
 myquery
-gunicorn
 python-dotenv
+gunicorn
 flask-cors
 flask_script

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from models.database import BaseModel
+from application.models.database import BaseModel
 
 
 class UserModel(BaseModel):

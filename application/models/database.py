@@ -2,7 +2,7 @@
 
 from myquery import DataBase, Table
 
-from config import MYSQL_URL
+from application.config import MYSQL_URL
 
 
 class CustomDataBase(DataBase):

@@ -3,7 +3,7 @@ from datetime import datetime, date
 
 from flask.json import JSONEncoder as _JSONEncoder
 
-from config import DATETIME_FORMAT, DATE_FORMAT
+from application.config import DATETIME_FORMAT, DATE_FORMAT
 
 
 class JSONEncoder(_JSONEncoder):

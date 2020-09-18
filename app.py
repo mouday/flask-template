@@ -2,13 +2,13 @@
 
 from flask import Flask
 
-from views.api import api_view
-from views.index.index import index_view
-
+from application.views.api import api_view
+from application.views.index import index_view
+from application import config
 app = Flask(__name__)
 
 # 加载配置
-app.config.from_object('config')
+app.config.from_object(config)
 
 # 配置蓝图
 app.register_blueprint(blueprint=index_view, url_prefix='/')
