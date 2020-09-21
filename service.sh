@@ -1,11 +1,11 @@
 #!/bin/bash
+# service.sh
 
 # 添加启动命令
 function start(){
     echo "start..."
-    # 此处修改为项目路径
-    cd <PROJECT_DIR>
-    nohup gunicorn -w 4 -b 127.0.0.1:5001 app:app 2>&1 &
+
+    gunicorn -c gunicorn.config.py app:app
 
     echo "start successful"
     return 0
@@ -15,9 +15,19 @@ function start(){
 function stop(){
     echo "stop..."
 
-    ps aux |grep gunicorn |grep -v grep |awk '{print "kill -9 " $2}'|sh
+    kill -9 `cat log/gunicorn.pid`
 
     echo "stop successful"
+    return 0
+}
+
+# 重启
+function restart(){
+    echo "restart..."
+
+    kill -HUP `cat log/gunicorn.pid`
+
+    echo "restart successful"
     return 0
 }
 
@@ -29,7 +39,7 @@ case $1 in
     stop
     ;;
 "restart")
-    stop && start
+    restart
     ;;
 *)
     echo "请输入: start, stop, restart"
