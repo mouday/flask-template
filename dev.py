@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+"""自动重载前端模板"""
+
 from flask_script import Manager
 from app import app
 from livereload import Server

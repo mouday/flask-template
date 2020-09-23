@@ -7,3 +7,4 @@ gunicorn
 flask-cors
 flask_script
 gevent
+environs
