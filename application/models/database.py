@@ -1,22 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from myquery import DataBase, Table
+from myquery import ReconnectionDataBase, Model
 
 from application.config import MYSQL_URL
 
 
-class CustomDataBase(DataBase):
-    def _before_execute(self, operation, params):
-        """使数据库保持链接"""
-        if not self.is_connected():
-            self.reconnect()
-        return super()._before_execute(operation, params)
+db = ReconnectionDataBase(db_url=MYSQL_URL)
 
 
-db = CustomDataBase(db_url=MYSQL_URL)
-
-
-class BaseModel(Table):
+class BaseModel(Model):
     """基类，用于被继承"""
 
     database = db

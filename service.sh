@@ -5,7 +5,7 @@
 function start(){
     echo "start..."
 
-    gunicorn -c gunicorn.config.py app:app
+    gunicorn -c gunicorn.config.py app:app && \
 
     echo "start successful"
     return 0
@@ -15,7 +15,7 @@ function start(){
 function stop(){
     echo "stop..."
 
-    kill -9 `cat log/gunicorn.pid`
+    kill -9 `cat log/gunicorn.pid` && \
 
     echo "stop successful"
     return 0
@@ -25,7 +25,7 @@ function stop(){
 function restart(){
     echo "restart..."
 
-    kill -HUP `cat log/gunicorn.pid`
+    kill -HUP `cat log/gunicorn.pid` && \
 
     echo "restart successful"
     return 0

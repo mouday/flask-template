@@ -2,13 +2,22 @@
 from flask import jsonify
 
 
-def result(data=None, msg='ok', code=0):
-    """统一返回的格式"""
-    if data is None:
-        data = dict()
+class Result(object):
 
-    return jsonify({
-        'data': data,
-        'msg': msg,
-        'code': code
-    })
+    @classmethod
+    def result(cls, data, msg, code):
+        """统一返回的格式"""
+
+        return jsonify({
+            'data': data,
+            'msg': msg,
+            'code': code
+        })
+
+    @classmethod
+    def success(cls, data, msg='success', code=0):
+        return cls.result(data, msg, code)
+
+    @classmethod
+    def error(cls, data, msg='error', code=-1):
+        return cls.result(data, msg, code)

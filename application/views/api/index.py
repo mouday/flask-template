@@ -8,7 +8,7 @@ from flask import Blueprint
 from flask_cors import CORS
 
 from application.utils.json import JSONEncoder
-from application.views.api.commons.result import result
+from application.views.api.commons.result import Result
 
 api_view = Blueprint(name="api", import_name=__name__)
 
@@ -24,7 +24,7 @@ def error_handler(e):
     """
     蓝图异常捕获
     """
-    return result(data=None, msg=str(e), code=-1)
+    return Result.result(data=None, msg=str(e), code=-1)
 
 
 @api_view.errorhandler(500)
@@ -32,4 +32,4 @@ def error_500_handler(e):
     """
     蓝图异常捕获
     """
-    return result(data=None, msg=str(e), code=-1)
+    return Result.result(data=None, msg=str(e), code=-1)
