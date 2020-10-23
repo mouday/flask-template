@@ -5,7 +5,7 @@
 function start(){
     echo "start..."
 
-    gunicorn -c gunicorn.config.py app:app && \
+    gunicorn -c gunicorn_config.py app:app && \
 
     echo "start successful"
     return 0
